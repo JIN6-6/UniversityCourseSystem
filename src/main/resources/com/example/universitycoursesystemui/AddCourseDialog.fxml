@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이 FXML 파일은 JavaFX를 이용한 "새 강의 추가" 대화상자의 UI 레이아웃을 정의합니다. -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- 최상위 컨테이너로 AnchorPane을 사용합니다. -->
+<AnchorPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.universitycoursesystemui.controller.AddCourseDialogController">
+    <!-- AddCourseDialogController 클래스가 UI 이벤트 처리를 담당합니다. -->
+
+    <!-- VBox를 사용해 자식 요소들을 수직으로 배치합니다.
+         spacing: 자식들 사이의 간격을 10픽셀로 설정
+         alignment: 내용이 상단 중앙에 정렬됨
+         prefWidth/prefHeight: 대화상자의 기본 크기를 400x550으로 지정
+         AnchorPane의 속성들을 사용해 상하좌우에 10픽셀의 여백을 적용 -->
+    <VBox spacing="10" alignment="TOP_CENTER" prefWidth="400" prefHeight="550"
+          AnchorPane.topAnchor="10.0" AnchorPane.bottomAnchor="10.0"
+          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+
+        <!-- 화면 상단에 제목 Label을 배치, 폰트 크기와 굵기, 패딩을 인라인 CSS로 설정 -->
+        <Label text="새 강의 추가"
+               style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 10 0 10 0;"/>
+
+        <!-- Form 영역을 위한 GridPane을 사용. 행과 열 간의 간격(hgap, vgap)을 10픽셀로 지정 -->
+        <GridPane hgap="10" vgap="10">
+            <!-- GridPane의 전체 여백(padding)을 Insets를 통해 10픽셀로 설정 -->
+            <padding>
+                <Insets topRightBottomLeft="10"/>
+            </padding>
+
+            <!-- 두 개의 열 제약 조건을 지정
+                 첫 번째 열: 최소 너비 100, 선호 너비 120
+                 두 번째 열: 최소 너비 150, 선호 너비 250 -->
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="120" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="150" prefWidth="250" />
+            </columnConstraints>
+
+            <!-- 과목 코드 입력 필드 -->
+            <Label text="과목 코드:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="courseIDField" promptText="예: CS101" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <!-- 과목명 입력 필드 -->
+            <Label text="과목명:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="courseNameField" promptText="예: 자료구조" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <!-- 교수 ID 입력 필드 -->
+            <Label text="교수 ID:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="professorIDField" promptText="예: prof318" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <!-- 학점 입력 필드 -->
+            <Label text="학점:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextField fx:id="creditField" promptText="예: 3" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+            <!-- 강의 시간 입력 필드 -->
+            <Label text="시간:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <TextField fx:id="timeField" promptText="예: 월10-12, 수13-15" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+            <!-- 이수 구분 입력 필드 -->
+            <Label text="이수구분:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+            <TextField fx:id="courseTypeField" promptText="예: 전공필수" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+            <!-- 정원 입력 필드 -->
+            <Label text="정원:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+            <TextField fx:id="maxCapacityField" promptText="예: 50" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+            <!-- 과목 전공 입력 필드 -->
+            <Label text="과목 전공:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+            <TextField fx:id="majorNameField" promptText="예: 소프트웨어융합학과" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+        </GridPane>
+
+        <!-- 하단에 버튼들을 담은 HBox 배치. 버튼 간 간격을 10픽셀로 지정하며 중앙 정렬 -->
+        <HBox spacing="10" alignment="CENTER">
+            <!-- 저장 버튼: 클릭 시 handleSave 메서드를 호출
+                 prefWidth: 버튼의 기본 너비 100픽셀
+                 인라인 CSS를 사용하여 폰트 크기, 배경색, 글자 색상, 테두리 및 배경 모서리를 스타일링 -->
+            <Button fx:id="saveButton" text="저장" onAction="#handleSave" prefWidth="100"
+                    style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+            <!-- 취소 버튼: 클릭 시 handleCancel 메서드를 호출, 스타일은 저장 버튼과 유사하게 적용 -->
+            <Button fx:id="cancelButton" text="취소" onAction="#handleCancel" prefWidth="100"
+                    style="-fx-font-size: 14px; -fx-background-color: #F44336; -fx-text-fill: white; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+        </HBox>
+
+    </VBox>
+</AnchorPane>

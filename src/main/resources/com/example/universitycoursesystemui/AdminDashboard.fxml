@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.universitycoursesystemui.controller.AdminDashboardController">
+    <VBox spacing="10" alignment="TOP_CENTER" prefWidth="900" prefHeight="700" AnchorPane.topAnchor="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+
+        <Label text="관리자 대시보드" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 10 0 10 0;"/>
+
+        <HBox spacing="10" alignment="CENTER_LEFT" VBox.vgrow="NEVER">
+            <Label text="관리자 ID:"/>
+            <Label fx:id="adminIdLabel" text="[로그인된 관리자 ID]" style="-fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="로그아웃" onAction="#handleLogout" style="-fx-font-size: 14px; -fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+        </HBox>
+
+        <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <tabs>
+                <Tab text="강의 관리">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <Label text="강의 관리 섹션" AnchorPane.centerX="250" AnchorPane.centerY="200"/>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="학생 관리">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <Label text="학생 관리 섹션" AnchorPane.centerX="250" AnchorPane.centerY="200"/> // admin은 구현 안해서 일단 무시함.
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+  이 FXML 문서는 학생 대시보드의 "수강 신청" 화면 레이아웃을 정의합니다.
+  컨트롤러는 StudentDashboardController가 담당하여, 화면 내 여러 이벤트(예: 수강 신청, 취소, 새로고침 등)를 처리합니다.
+-->
+<AnchorPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.universitycoursesystemui.controller.StudentDashboardController">
+
+    <!-- VBox: 전체 레이아웃을 수직으로 정렬하며, 화면 상하좌우에 20px의 여백을 둡니다.
+         기본 크기는 950x750, 자식들 간의 간격은 10입니다. -->
+    <VBox alignment="TOP_CENTER" spacing="10" prefWidth="950" prefHeight="750"
+          AnchorPane.topAnchor="20.0"
+          AnchorPane.bottomAnchor="20.0"
+          AnchorPane.leftAnchor="20.0"
+          AnchorPane.rightAnchor="20.0">
+
+        <!-- 학생 대시보드 제목 -->
+        <Label text="학생 대시보드 - 수강 신청" styleClass="label-title" />
+
+        <!-- 상단 영역: 학생 ID와 내 시간표를 함께 표시 -->
+        <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-padding: 10 5 10 5;">
+
+            <!-- 학생 ID 표시 영역 -->
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <Label text="학생 ID:" />
+                <!-- 학생 ID 값이 바인딩될 라벨 -->
+                <Label fx:id="studentIdLabel" style="-fx-font-weight: bold;" />
+            </HBox>
+
+            <!-- 남은 공간을 채워 오른쪽 정렬을 위한 Region -->
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- 내 시간표 표시 영역 -->
+            <VBox alignment="CENTER" spacing="2"
+                  style="-fx-border-color: #dadedf; -fx-border-width: 1; -fx-padding: 5; -fx-background-color: white; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <Label text="내 시간표" style="-fx-font-size: 10px; -fx-font-weight: bold;"/>
+                <!-- 시간표를 표시할 GridPane (각 셀 배치는 컨트롤러에서 처리) -->
+                <GridPane fx:id="scheduleGrid" hgap="0.5" vgap="0.5" alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="15" prefWidth="15" maxWidth="10" hgrow="NEVER" />
+                        <ColumnConstraints minWidth="15" prefWidth="15" maxWidth="15" hgrow="NEVER" />
+                        <ColumnConstraints minWidth="15" prefWidth="15" maxWidth="15" hgrow="NEVER" />
+                        <ColumnConstraints minWidth="15" prefWidth="15" maxWidth="15" hgrow="NEVER" />
+                        <ColumnConstraints minWidth="15" prefWidth="15" maxWidth="15" hgrow="NEVER" />
+                        <ColumnConstraints minWidth="15" prefWidth="15" maxWidth="15" hgrow="NEVER" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10" prefHeight="10" maxHeight="10" vgrow="NEVER" />
+                        <RowConstraints minHeight="15" prefHeight="15" maxHeight="15" vgrow="NEVER" />
+                        <RowConstraints minHeight="15" prefHeight="15" maxHeight="15" vgrow="NEVER" />
+                        <RowConstraints minHeight="15" prefHeight="15" maxHeight="15" vgrow="NEVER" />
+                        <RowConstraints minHeight="15" prefHeight="15" maxHeight="15" vgrow="NEVER" />
+                        <RowConstraints minHeight="15" prefHeight="15" maxHeight="15" vgrow="NEVER" />
+                        <RowConstraints minHeight="15" prefHeight="15" maxHeight="15" vgrow="NEVER" />
+                    </rowConstraints>
+                </GridPane>
+            </VBox>
+        </HBox>
+
+        <!-- 전체 강의 목록 헤더: 제목 및 AI 추천, 새로고침 버튼 포함 -->
+        <HBox alignment="CENTER_LEFT" style="-fx-padding: 10 0 5 0;" spacing="10">
+            <Label text="전체 강의 목록" styleClass="label-subtitle" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button onAction="#handleShowRecommendations" styleClass="button-blue" text="AI 추천 과목" />
+            <Button onAction="#handleRefresh" styleClass="button-grey" text="새로고침" />
+        </HBox>
+
+        <!-- 전체 강의 목록을 표시하는 TableView -->
+        <TableView fx:id="courseTable" prefHeight="250" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="courseIDColumn" text="과목 ID"/>
+                <TableColumn fx:id="courseNameColumn" text="과목명" prefWidth="150"/>
+                <TableColumn fx:id="professorIDColumn" text="교수명"/>
+                <TableColumn fx:id="creditColumn" text="학점"/>
+                <TableColumn fx:id="timeColumn" text="시간" prefWidth="120"/>
+                <TableColumn fx:id="courseTypeColumn" text="이수 구분"/>
+                <TableColumn fx:id="maxCapacityColumn" text="정원"/>
+                <TableColumn fx:id="currentEnrollmentColumn" text="현원"/>
+                <TableColumn fx:id="waitlistCountColumn" text="대기"/>
+            </columns>
+        </TableView>
+
+        <!-- 수강 신청/취소 버튼 영역 -->
+        <HBox alignment="CENTER_LEFT" spacing="10" prefHeight="40">
+            <Button onAction="#handleEnrollCourse" text="수강 신청" prefWidth="120" />
+            <Button onAction="#handleWithdrawCourse" styleClass="button-cancel" text="수강/대기 취소" />
+        </HBox>
+
+        <!-- 내가 신청/대기 중인 강의와 학점 정보를 표시 -->
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10 0 5 0;">
+            <Label text="내가 신청/대기 중인 강의 목록" styleClass="label-subtitle"/>
+
+            <!-- 현재 신청 학점을 표시하는 영역 -->
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <Label text="현재 신청 학점:" />
+                <Label fx:id="currentCreditsLabel" style="-fx-font-weight: bold;"/>
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- 학점 통계 정보 (총 이수, 전공 필수/전체) -->
+            <VBox spacing="2" alignment="CENTER_LEFT">
+                <HBox spacing="5" alignment="CENTER_LEFT">
+                    <Label text="총 이수:" style="-fx-font-size: 11px;"/>
+                    <Label fx:id="totalCreditsLabel" style="-fx-font-weight: bold; -fx-font-size: 11px;"/>
+                </HBox>
+                <HBox spacing="5" alignment="CENTER_LEFT">
+                    <Label text="전공 필수:" style="-fx-font-size: 11px;"/>
+                    <Label fx:id="majorMandatoryCreditsLabel" style="-fx-font-weight: bold; -fx-font-size: 11px;"/>
+                    <Label text=" / " style="-fx-font-size: 11px;"/>
+                    <Label text="전공 전체:" style="-fx-font-size: 11px;"/>
+                    <Label fx:id="majorTotalCreditsLabel" style="-fx-font-weight: bold; -fx-font-size: 11px;"/>
+                </HBox>
+            </VBox>
+        </HBox>
+
+        <!-- 내가 신청한 강의 목록을 표시하는 TableView -->
+        <TableView fx:id="myEnrollmentTable" prefHeight="200" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="myCourseIDColumn" text="과목 ID"/>
+                <TableColumn fx:id="myCourseNameColumn" text="과목명" prefWidth="150"/>
+                <TableColumn fx:id="myProfessorIDColumn" text="교수명"/>
+                <TableColumn fx:id="myCreditColumn" text="학점"/>
+                <TableColumn fx:id="myTimeColumn" text="시간" prefWidth="120"/>
+                <TableColumn fx:id="myCourseTypeColumn" text="이수 구분"/>
+                <TableColumn fx:id="myStatusColumn" text="상태"/>
+            </columns>
+        </TableView>
+
+        <!-- 하단 영역: 로그아웃 버튼을 오른쪽 정렬하여 표시 -->
+        <HBox alignment="CENTER_RIGHT" prefHeight="40">
+            <Button onAction="#handleLogout" styleClass="button-grey" text="로그아웃" />
+        </HBox>
+
+    </VBox>
+</AnchorPane>

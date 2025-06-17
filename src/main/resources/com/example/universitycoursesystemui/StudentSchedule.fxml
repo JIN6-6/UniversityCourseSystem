@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<!--
+  이 파일은 학생의 시간표를 보여주는 인터페이스를 정의합니다.
+  컨트롤러 StudentScheduleController에서 UI 이벤트와 데이터 처리를 담당합니다.
+-->
+<AnchorPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.universitycoursesystemui.controller.StudentScheduleController">
+
+    <!-- VBox: 전체 레이아웃을 수직으로 배치하며, 상하좌우에 10px 여백을 둡니다.
+         기본 크기는 800x600, 요소들 간의 간격은 10입니다. -->
+    <VBox spacing="10" alignment="TOP_CENTER" prefWidth="800" prefHeight="600"
+          AnchorPane.topAnchor="10.0" AnchorPane.bottomAnchor="10.0"
+          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+
+        <!-- 상단 제목: "내 시간표"를 큰 글씨와 굵은 폰트로 표시 -->
+        <Label text="내 시간표" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 10 0 10 0;"/>
+
+        <!-- 학생 정보 영역: 학생 ID와 강의 개수를 표시 -->
+        <HBox spacing="10" alignment="CENTER_LEFT" VBox.vgrow="NEVER">
+            <!-- "학생 ID:" 텍스트 레이블 -->
+            <Label text="학생 ID:"/>
+            <!-- 실제 학생 ID가 바인딩되는 레이블 (굵은 폰트) -->
+            <Label fx:id="scheduleStudentIDLabel" text="[학생 ID]" style="-fx-font-weight: bold;"/>
+            <!-- 남은 공간을 채워 우측 정렬 효과 제공 -->
+            <Region HBox.hgrow="ALWAYS"/>
+            <!-- 수강 중인 강의 개수를 표시하는 레이블 -->
+            <Label fx:id="scheduleInfoLabel" text="총 0개 강의"/>
+        </HBox>
+
+        <!-- 시간표 그리드 영역 -->
+        <GridPane fx:id="scheduleGrid" VBox.vgrow="ALWAYS" alignment="CENTER" hgap="5" vgap="5"
+                  style="-fx-border-color: lightgray; -fx-border-width: 1;">
+            <!-- GridPane 내부 여백 설정 -->
+            <padding>
+                <Insets topRightBottomLeft="10"/>
+            </padding>
+            <!-- 열 제약조건 설정: 첫 번째 열은 시간 표시, 나머지 5열은 월 ~ 금을 위한 공간 -->
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="60" prefWidth="80" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="120" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="120" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="120" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="120" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="120" />
+            </columnConstraints>
+            <!-- 행 제약조건 설정: 첫 행은 요일 헤더, 이후 행들은 각각의 수업 시작 시간을 표시 -->
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" minHeight="30" prefHeight="40" />
+                <RowConstraints vgrow="SOMETIMES" minHeight="50" prefHeight="60" />
+                <RowConstraints vgrow="SOMETIMES" minHeight="50" prefHeight="60" />
+                <RowConstraints vgrow="SOMETIMES" minHeight="50" prefHeight="60" />
+                <RowConstraints vgrow="SOMETIMES" minHeight="50" prefHeight="60" />
+                <RowConstraints vgrow="SOMETIMES" minHeight="50" prefHeight="60" />
+                <RowConstraints vgrow="SOMETIMES" minHeight="50" prefHeight="60" />
+                <RowConstraints vgrow="SOMETIMES" minHeight="50" prefHeight="60" />
+                <RowConstraints vgrow="SOMETIMES" minHeight="50" prefHeight="60" />
+                <RowConstraints vgrow="SOMETIMES" minHeight="50" prefHeight="60" />
+            </rowConstraints>
+
+            <!-- 요일 및 시간 헤더 -->
+            <!-- 첫 행: 헤더. 첫 번째 셀은 "시간", 나머지 셀은 요일 (월 ~ 금) -->
+            <Label text="시간" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;"/>
+            <Label text="월" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-font-weight: bold;"/>
+            <Label text="화" GridPane.columnIndex="2" GridPane.rowIndex="0" style="-fx-font-weight: bold;"/>
+            <Label text="수" GridPane.columnIndex="3" GridPane.rowIndex="0" style="-fx-font-weight: bold;"/>
+            <Label text="목" GridPane.columnIndex="4" GridPane.rowIndex="0" style="-fx-font-weight: bold;"/>
+            <Label text="금" GridPane.columnIndex="5" GridPane.rowIndex="0" style="-fx-font-weight: bold;"/>
+
+            <!-- 첫 열: 수업 시작 시간을 표시하는 레이블들 -->
+            <Label text="9:00" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Label text="10:00" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <Label text="11:00" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <Label text="12:00" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <Label text="13:00" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+            <Label text="14:00" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+            <Label text="15:00" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+            <Label text="16:00" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+            <Label text="17:00" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+            <Label text="18:00" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+
+            <!-- (추가적인 강의 배치 컨텐츠는 컨트롤러에서 동적으로 추가 가능) -->
+
+        </GridPane>
+
+        <!-- 하단 닫기 버튼: 클릭 시 handleCloseSchedule 메서드 호출 -->
+        <Button text="닫기" onAction="#handleCloseSchedule"
+                style="-fx-font-size: 14px; -fx-background-color: #607D8B; -fx-text-fill: white; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+
+    </VBox>
+</AnchorPane>

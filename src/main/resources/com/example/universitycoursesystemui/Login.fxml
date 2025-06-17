@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 수강신청 시스템의 로그인 화면 레이아웃을 정의한 FXML 파일입니다. -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+  최상위 컨테이너로 VBox를 사용하여 자식 요소들을 세로로 정렬합니다.
+  - alignment="CENTER": 모든 자식 요소들을 수평 및 수직 중앙에 배치합니다.
+  - maxHeight, maxWidth, minHeight, minWidth가 "-Infinity"로 설정된 것은 크기에 제한을 두지 않음을 의미합니다.
+  - spacing="20.0": 자식 요소들 사이에 20픽셀의 간격을 둡니다.
+  - fx:controller="com.example.universitycoursesystemui.controller.LoginController": 이 FXML의 이벤트 처리를 담당할 컨트롤러를 지정합니다.
+-->
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.universitycoursesystemui.controller.LoginController">
+    <children>
+        <!-- 내부 VBox: 로그인 구성 요소들을 그룹화하여 세로로 정렬.
+             - alignment="CENTER": 내부 요소들을 중앙 정렬.
+             - spacing="20.0": 각 요소 사이에 20픽셀 간격 부여.
+             - styleClass="login-pane": CSS를 통해 추가적인 스타일링을 적용할 때 사용. -->
+        <VBox alignment="CENTER" spacing="20.0" styleClass="login-pane">
+            <children>
+                <!-- 제목 레이블: '수강신청 시스템' 텍스트를 표시하며, CSS 클래스 'login-title'을 적용받아 스타일링됨 -->
+                <Label styleClass="login-title" text="수강신청 시스템" />
+                <!-- 사용자 아이디 입력 필드:
+                     - fx:id="userIDField": 컨트롤러와 연동하기 위한 고유 ID.
+                     - promptText="아이디": 입력하지 않았을 때 힌트 텍스트로 표시됨 -->
+                <TextField fx:id="userIDField" promptText="아이디" />
+                <!-- 비밀번호 입력 필드:
+                     - PasswordField를 사용하여 입력 시 값을 숨김 처리.
+                     - fx:id="passwordField": 컨트롤러와 연동하기 위한 고유 ID.
+                     - promptText="비밀번호": 입력 힌트 텍스트 -->
+                <PasswordField fx:id="passwordField" promptText="비밀번호" />
+                <!-- 로그인 버튼:
+                     - onAction="#handleLogin": 버튼 클릭 시 LoginController의 handleLogin 메서드 호출.
+                     - prefWidth="250.0": 버튼의 선호 너비 지정 -->
+                <Button mnemonicParsing="false" onAction="#handleLogin" prefWidth="250.0" text="로그인" />
+                <!-- 회원가입 버튼:
+                     - onAction="#handleSignUp": 버튼 클릭 시 LoginController의 handleSignUp 메서드 호출.
+                     - prefWidth="250.0": 버튼의 선호 너비 지정.
+                     - 인라인 CSS를 통해 배경색과 텍스트 색상을 설정 -->
+                <Button mnemonicParsing="false" onAction="#handleSignUp" prefWidth="250.0" text="회원가입" style="-fx-background-color: #00BFFF; -fx-text-fill: white;"/>
+            </children>
+            <!-- 내부 VBox의 양쪽 및 상하 여백을 Insets를 사용해 30픽셀씩 설정 -->
+            <padding>
+                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+            </padding>
+        </VBox>
+    </children>
+</VBox>
