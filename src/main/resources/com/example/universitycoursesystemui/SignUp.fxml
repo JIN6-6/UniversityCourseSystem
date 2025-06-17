@@ -49,7 +49,7 @@
 
             <!-- 사용자 유형 선택 항목: ComboBox를 통해 가입 시 역할(예: 학생, 교수 등)을 선택할 수 있습니다. -->
             <Label text="사용자 유형 선택:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-            <ComboBox fx:id="roleComboBox" prefWidth="250.0" promptText="역할 선택" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            <ComboBox fx:id="roleComboBox" prefWidth="250.0" promptText="유형 선택" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
 
             <!-- 학과/전공 입력 항목 -->
             <Label text="학과/전공:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>

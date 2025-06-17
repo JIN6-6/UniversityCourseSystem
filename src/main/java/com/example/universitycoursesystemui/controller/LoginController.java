@@ -73,9 +73,7 @@ public class LoginController implements Initializable {
                 } else if ("professor".equals(role)) {
                     showAlert(Alert.AlertType.INFORMATION, "로그인 성공", "교수 로그인", "환영합니다, 교수님!");
                     // System.out.println("교수 로그인 성공: " + userID); // 디버그용 출력 제거
-                } else if ("admin".equals(role)) {
-                    MainApplication.showAdminDashboard(userID);
-                    // System.out.println("관리자 로그인 성공: " + userID); // 디버그용 출력 제거
+
                 } else {
                     // 알 수 없는 사용자 유형인 경우
                     showAlert(Alert.AlertType.ERROR, "로그인 실패", "알 수 없는 사용자 유형입니다.");
