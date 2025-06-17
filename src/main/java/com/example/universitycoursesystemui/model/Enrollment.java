@@ -1,4 +1,4 @@
-package com.example.universitycoursesystemui;
+package com.example.universitycoursesystemui.model;
 
 // Enrollment 클래스는 학생과 강의 간의 수강 관계를 나타냅니다.
 public class Enrollment {

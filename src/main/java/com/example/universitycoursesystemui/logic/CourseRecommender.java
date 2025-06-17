@@ -1,6 +1,6 @@
 package com.example.universitycoursesystemui.logic;
 
-import com.example.universitycoursesystemui.Course;
+import com.example.universitycoursesystemui.model.Course;
 import com.example.universitycoursesystemui.dao.CourseDAO;
 import com.example.universitycoursesystemui.dao.CompletedCourseDAO;
 import com.example.universitycoursesystemui.model.CompletedCourse;
@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Comparator;
 import java.util.Map; // Map 클래스 import
 import java.util.LinkedHashMap; // 순서를 유지하는 LinkedHashMap import
-import java.util.stream.Collectors;
+
 
 /**
  * CourseRecommender 클래스

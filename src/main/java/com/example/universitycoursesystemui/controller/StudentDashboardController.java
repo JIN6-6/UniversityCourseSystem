@@ -1,8 +1,8 @@
 package com.example.universitycoursesystemui.controller;
 
-import com.example.universitycoursesystemui.Course;
-import com.example.universitycoursesystemui.EnrolledCourseInfo;
-import com.example.universitycoursesystemui.Enrollment;
+import com.example.universitycoursesystemui.model.Course;
+import com.example.universitycoursesystemui.model.EnrolledCourseInfo;
+import com.example.universitycoursesystemui.model.Enrollment;
 import com.example.universitycoursesystemui.MainApplication;
 import com.example.universitycoursesystemui.dao.CourseDAO;
 import com.example.universitycoursesystemui.dao.EnrollmentDAO;

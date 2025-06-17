@@ -1,4 +1,4 @@
-package com.example.universitycoursesystemui;
+package com.example.universitycoursesystemui.model;
 
 /*
  * User 클래스는 시스템 내 사용자의 정보를 저장하는 기본 모델 클래스입니다.

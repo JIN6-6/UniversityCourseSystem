@@ -1,6 +1,6 @@
 package com.example.universitycoursesystemui.controller;
 
-import com.example.universitycoursesystemui.Course;
+import com.example.universitycoursesystemui.model.Course;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

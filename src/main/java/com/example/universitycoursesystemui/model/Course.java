@@ -1,4 +1,4 @@
-package com.example.universitycoursesystemui;
+package com.example.universitycoursesystemui.model;
 
 /**
  * Course 클래스

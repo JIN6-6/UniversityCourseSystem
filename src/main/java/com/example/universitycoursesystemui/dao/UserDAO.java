@@ -4,11 +4,10 @@
  */
 package com.example.universitycoursesystemui.dao;
 
-import com.example.universitycoursesystemui.User; // User 모델 클래스 import 필요
+import com.example.universitycoursesystemui.model.User; // User 모델 클래스 import 필요
 import com.example.universitycoursesystemui.util.DatabaseConnection;
 
 import java.sql.Connection;
-import java.sql.DriverManager; // 필요 없으면 삭제해도 됨
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

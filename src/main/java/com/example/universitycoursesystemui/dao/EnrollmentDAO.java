@@ -1,6 +1,6 @@
 package com.example.universitycoursesystemui.dao;
 
-import com.example.universitycoursesystemui.Enrollment;
+import com.example.universitycoursesystemui.model.Enrollment;
 import com.example.universitycoursesystemui.util.DatabaseConnection;
 
 import java.sql.Connection;

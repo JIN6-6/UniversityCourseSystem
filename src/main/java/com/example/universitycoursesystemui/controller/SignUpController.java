@@ -1,7 +1,7 @@
 package com.example.universitycoursesystemui.controller;
 
 import com.example.universitycoursesystemui.MainApplication;
-import com.example.universitycoursesystemui.User; // User 모델 클래스 import 필요
+import com.example.universitycoursesystemui.model.User; // User 모델 클래스 import 필요
 import com.example.universitycoursesystemui.dao.UserDAO;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;

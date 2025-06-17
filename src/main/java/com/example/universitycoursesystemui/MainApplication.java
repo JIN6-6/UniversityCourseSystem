@@ -1,6 +1,5 @@
 package com.example.universitycoursesystemui;
 
-import com.example.universitycoursesystemui.controller.AdminDashboardController;
 import com.example.universitycoursesystemui.controller.StudentDashboardController;
 
 import javafx.application.Application;
@@ -65,26 +64,6 @@ public class MainApplication extends Application {
         // 생성된 Scene을 primaryStage에 설정하고 제목을 "학생 대시보드"로 변경합니다.
         primaryStage.setScene(scene);
         primaryStage.setTitle("학생 대시보드");
-        // primaryStage.setFullScreen(true); // 전체화면 모드를 사용하려면 이 주석을 해제하세요.
-    }
-
-    // 관리자 대시보드 화면을 로드하는 메서드입니다.
-    // 로그인한 관리자 ID를 받아서 화면에 반영합니다.
-    public static void showAdminDashboard(String adminId) throws IOException {
-        // AdminDashboard.fxml 파일을 로드합니다.
-        FXMLLoader loader = new FXMLLoader(
-                MainApplication.class.getResource("/com/example/universitycoursesystemui/AdminDashboard.fxml")
-        );
-        Parent root = loader.load();
-        // 로드된 FXML의 컨트롤러를 가져와 로그인된 관리자 ID를 설정합니다.
-        AdminDashboardController controller = loader.getController();
-        controller.setLoggedInAdminID(adminId);
-        // FXML에서 생성된 루트 노드를 기반으로 새로운 Scene 객체를 생성하고 스타일을 적용합니다.
-        Scene scene = new Scene(root);
-        applyStyles(scene);
-        // primaryStage에 생성된 Scene을 설정하고 제목을 "관리자 대시보드"로 변경합니다.
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("관리자 대시보드");
         // primaryStage.setFullScreen(true); // 전체화면 모드를 사용하려면 이 주석을 해제하세요.
     }
 

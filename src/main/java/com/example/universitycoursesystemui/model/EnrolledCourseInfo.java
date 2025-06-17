@@ -1,4 +1,4 @@
-package com.example.universitycoursesystemui;
+package com.example.universitycoursesystemui.model;
 
 import javafx.beans.property.SimpleStringProperty;
 

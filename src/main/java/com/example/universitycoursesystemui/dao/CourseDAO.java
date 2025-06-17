@@ -1,6 +1,6 @@
 package com.example.universitycoursesystemui.dao;
 
-import com.example.universitycoursesystemui.Course;
+import com.example.universitycoursesystemui.model.Course;
 import com.example.universitycoursesystemui.util.DatabaseConnection;
 import java.sql.*;
 import java.util.ArrayList;
